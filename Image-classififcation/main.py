@@ -8,11 +8,6 @@ from tkinter import filedialog
 from tkinter import *
 from PIL import ImageTk, Image
 
-
-(training_images, training_labels), (testing_images, testing_labels) = datasets.cifar10.load_data()
-
-training_images, testing_images = training_images / 255.0, testing_images / 255.0
-
 class_names = ['Airplane', 'Car', 'Bird', 'Cat', 'Deer', 'Dog', 'Frog', 'Horse', 'Ship', 'Truck']
 
 model = models.load_model('image_classifier.model')
