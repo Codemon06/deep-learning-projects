@@ -10,7 +10,7 @@ from PIL import ImageTk, Image
 
 class_names = ['Airplane', 'Car', 'Bird', 'Cat', 'Deer', 'Dog', 'Frog', 'Horse', 'Ship', 'Truck']
 
-model = models.load_model('image_classifier.model')
+model = models.load_model('image_classifier71.model')
 
 def classify(file_path):
     img = cv.imread(file_path)
@@ -22,21 +22,21 @@ def classify(file_path):
     prediction = model.predict(np.array([img]) / 255.0)
 
     index = np.argmax(prediction)
-    label.configure(foreground='#011638', text=class_names[index])
+    label.configure(foreground='#FFFFFF',text=class_names[index], font=('arial',20,'bold'))
     print(f'\n\nPrediction is : {class_names[index]}')
 
 
 top=tk.Tk()
 top.geometry('800x600')
 top.title('Image Classification')
-top.configure(background='#CDCDCD')
-label=Label(top,background='#CDCDCD', font=('arial',15,'bold'))
+top.configure(background='#202325')
+label=Label(top,background='#202325', font=('arial',15,'bold'))
 sign_image = Label(top)
 
 def show_classify_button(file_path):
-    classify_b=Button(top,text="Classify Image",command=lambda: classify(file_path),padx=10,pady=5)
+    classify_b=Button(top,text="CLASSIFY",command=lambda: classify(file_path),padx=10,pady=5)
     classify_b.configure(background='#364156', foreground='white',font=('arial',10,'bold'))
-    classify_b.place(relx=0.79,rely=0.46)
+    classify_b.pack(side=RIGHT, padx=80, pady=90)
     
 def upload_image(): 
     try:
@@ -51,13 +51,13 @@ def upload_image():
     except:
         pass
 
-upload=Button(top,text="Upload an image",command=upload_image,padx=10,pady=5)
+upload=Button(top,text="UPLOAD",command=upload_image,padx=10,pady=8)
 upload.configure(background='#364156', foreground='white',font=('arial',10,'bold'))
-upload.pack(side=BOTTOM,pady=50)
-sign_image.pack(side=BOTTOM,expand=True)
+upload.pack(side=RIGHT, padx=80, pady=80)
+sign_image.pack(side=LEFT,expand=True)
 label.pack(side=BOTTOM,expand=True)
 
-heading = Label(top, text="Know Your Image",pady=20, font=('arial',20,'bold'))
-heading.configure(background='#CDCDCD',foreground='#364156')
-heading.pack()
+heading = Label(top, text="KNOW YOUR IMAGE", font=('MT Bold',30,'bold'))
+heading.configure(background='#202325',foreground='#FFFFFF')
+heading.pack(side=TOP)
 top.mainloop()
