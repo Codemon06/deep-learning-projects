@@ -1,6 +1,0 @@
-font bada karna hai
-box size
-know your image ka shadow
-dono button right side 
-image opposite side aur size mein badi
-result image ke niche with "Predicted image is : <name>"
